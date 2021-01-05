@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:1.19
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - php
+
+  php:
+    build: ./php
+    volumes:
+      - ./app:/var/www/html
+      - ./php/logs:/var/log
+#      - ./php/conf:/usr/local/etc/php
+      - ./supervisor/conf:/etc/supervisor
+      - ./supervisor/logs:/var/log/supervisor
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: novel
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/logs:/var/log/mysql
+#      - ./mysql/data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+
+
