@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginx:1.19
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./app:/var/www/html
       - ./nginx/conf:/etc/nginx/conf.d
@@ -13,11 +13,13 @@ services:
       - php
 
   php:
-    build: ./php
+    image: linqiuyu/php:7.4-fpm
+    ports:
+      - "9000:9000"
     volumes:
       - ./app:/var/www/html
       - ./php/logs:/var/log
-#      - ./php/conf:/usr/local/etc/php
+      - ./php/conf:/usr/local/etc/php
       - ./supervisor/conf:/etc/supervisor
       - ./supervisor/logs:/var/log/supervisor
     depends_on:
@@ -26,15 +28,18 @@ services:
 
   mysql:
     image: mysql:8.0
+    ports:
+      - "3306:3306"
     environment:
-      MYSQL_DATABASE: novel
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
       - ./mysql/conf:/etc/mysql/conf.d
       - ./mysql/logs:/var/log/mysql
-#      - ./mysql/data:/var/lib/mysql
+      - ./mysql/data:/var/lib/mysql
 
   redis:
+    ports:
+      - "6379:6379"
     image: redis:alpine
 
 
