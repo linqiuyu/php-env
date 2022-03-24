@@ -13,9 +13,9 @@ services:
       - php
 
   php:
-    image: linqiuyu/php:7.4-fpm
+    build: ./php
     ports:
-      - "9000:9000"
+      - "10080-10090:80-90"
     volumes:
       - ./app:/var/www/html
       - ./php/logs:/var/log
@@ -42,4 +42,12 @@ services:
       - "6379:6379"
     image: redis:alpine
 
-
+  elasticsearch:
+    image: elasticsearch:8.1.1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: single-node
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
