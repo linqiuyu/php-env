@@ -2,6 +2,11 @@ docker搭建的laravel开发环境，包含nginx、php-fpm、mysql、redis、sup
 
 使用
 =======
+```
+chmod 777 zookeeper
+chmod 777 kafka
+```
+
 将项目文件拷贝到app目录下
 ```
 docker-compose build

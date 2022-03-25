@@ -50,7 +50,9 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      discovery.type: single-node
+      - discovery.type=single-node
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=elastic
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data
 
