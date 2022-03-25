@@ -20,6 +20,7 @@ services:
       - ./app:/var/www/html
       - ./php/logs:/var/log
       - ./php/conf:/usr/local/etc/php
+      - ./php/php-fpm.d:/usr/local/etc/php-fpm.d
       - ./supervisor/conf:/etc/supervisor
       - ./supervisor/logs:/var/log/supervisor
     depends_on:
@@ -41,6 +42,8 @@ services:
     ports:
       - "6379:6379"
     image: redis:alpine
+    volumes:
+      - ./redis/data:/data
 
   elasticsearch:
     image: elasticsearch:8.1.1
