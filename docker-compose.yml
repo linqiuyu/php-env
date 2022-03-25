@@ -15,7 +15,7 @@ services:
   php:
     image: linqiuyu/php:7.4-fpm
     ports:
-      - "9000:9000"
+      - "9000-9010:9000-9010"
     volumes:
       - ./app:/var/www/html
       - ./php/logs:/var/log
