@@ -1,4 +1,4 @@
-docker搭建的laravel开发环境，包含nginx、php-fpm、mysql、redis、supervisor
+docker搭建的laravel开发环境，包含nginx、php-fpm、mysql、redis、supervisor、kafka
 
 使用
 =======
