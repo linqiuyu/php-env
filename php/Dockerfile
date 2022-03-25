@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y libzip-dev libxslt-dev libmagickwand-dev default-mysql-client && \
     docker-php-ext-install bcmath zip pdo_mysql mysqli opcache pcntl xsl && \
     pecl install http://pecl.php.net/get/xdebug-3.1.2.tgz &&\
-    docker-php-ext-enable xdebig && \
+    docker-php-ext-enable xdebug && \
     pecl install imagick && \
     docker-php-ext-enable imagick && \
     pecl install redis && \
