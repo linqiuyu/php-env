@@ -18,7 +18,6 @@ services:
       - "10080-10090:80-90"
     volumes:
       - ./app:/var/www/html
-      - ./php/logs:/var/log
       - ./php/conf:/usr/local/etc/php
       - ./php/php-fpm.d:/usr/local/etc/php-fpm.d
       - ./supervisor/conf:/etc/supervisor
