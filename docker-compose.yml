@@ -44,8 +44,8 @@ services:
     volumes:
       - ./redis/data:/data
 
-  elasticsearch:
-    image: elasticsearch:8.1.1
+  elastic:
+    image: elasticsearch:7.17.1
     ports:
       - "9200:9200"
       - "9300:9300"
