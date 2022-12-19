@@ -1,10 +1,12 @@
 FROM php:7.4-fpm
 
-COPY pecl-packages/swoole-4.8.12.tgz /root/pecl-packages
-COPY pecl-packages/xdebug-3.1.2.tgz /root/pecl-packages
-COPY pecl-packages/imagick-3.7.0.tgz /root/pecl-packages
-COPY pecl-packages/redis-5.3.6.tgz /root/pecl-packages
-COPY pecl-packages/rdkafka-6.0.0.tgz /root/pecl-packages
+RUN mkdir /root/pecl-packages
+
+COPY pecl-packages/swoole-4.8.12.tgz /root/pecl-packages/swoole-4.8.12.tgz
+COPY pecl-packages/xdebug-3.1.2.tgz /root/pecl-packages/xdebug-3.1.2.tgz
+COPY pecl-packages/imagick-3.7.0.tgz /root/pecl-packages/imagick-3.7.0.tgz
+COPY pecl-packages/redis-5.3.6.tgz /root/pecl-packages/redis-5.3.6.tgz
+COPY pecl-packages/rdkafka-6.0.0.tgz /root/pecl-packages/rdkafka-6.0.0.tgz
 
 RUN apt-get update && \
     apt-get install -y libzip-dev libxslt-dev libmagickwand-dev default-mysql-client librdkafka-dev && \
